@@ -12,7 +12,9 @@ export function makeHTML(stats, numbers) {
       <p>Svið: ${stats.max - stats.min}</p>
     </section>
     <section>
-      <p>Gögn: ${numbers}</p>
+      <div class="data">
+        <p>Gögn: ${numbers}</p>
+      </div>
     </section>
   `;
   const noData = `
@@ -32,7 +34,7 @@ export function dataTemplate(title, data, showBack = false) {
   <html>
     <head>
       <title>${title ?? ''}</title>
-      <link rel="stylesheet" href="../styles.css">
+      <link rel="stylesheet" href="../src/styles.css">
     </head>
     <body>
       ${data ?? ''}
@@ -44,8 +46,7 @@ export function dataTemplate(title, data, showBack = false) {
 export function makeIndex(entries) {
   let list = '';
   for (const entry of entries) {
-    //const { file, fileName } = entry;
-    const link = `<li><a href="${`${entry}.html`}">${entry}</a></li>`;
+    const link = `<li><a href="${`${entry}.html`}">Gagnasett ${entry}</a></li>`;
     list += link;
   }
 

@@ -27,8 +27,8 @@ async function main() {
           continue;
         }
         const data = await readFile(path);
-
-        const numbers = parse(data);
+        const str = data.toString('utf-8');
+        const numbers = parse(str);
         const stats = calculate(numbers);
 
         const html = makeHTML(stats, numbers);
