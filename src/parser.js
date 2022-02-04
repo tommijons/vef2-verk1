@@ -7,7 +7,7 @@ export function parse(input) {
       parsed.push(input);
     }
   }
-  return parsed;
+  return parsed.filter(Number);
 }
 
 function cleanData(input) {

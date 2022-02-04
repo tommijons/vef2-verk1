@@ -1,7 +1,7 @@
 import {max, min, mean, median, variance,std,sum} from 'mathjs';
 
 export function calculate(numbers) {
-  if (numbers.length < 1) return NaN;
+  if (numbers.length < 1) return [];
 
   const results = {
     "max" : max(numbers),
