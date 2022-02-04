@@ -1,22 +1,19 @@
-
 export function parse(input) {
-  const data = input.split('\n').map(Number);
+  const data = input.split('\n');
   const parsed = [];
   for(const input of data) {
-    if(Number.isInteger(input)) {
+    cleanData(input);
+    if(!isNaN(input)) {
       parsed.push(input);
     }
   }
-  console.log(parsed);
   return parsed;
 }
 
-function clean(string) {
-  if (string === null || string === '' || string === undefined) return NaN;
-  const trimmed = string.toString.trim(); if (trimmed === '') return NaN;
-  const cleanStr = string.toString().replace(/[^a-zA-Z0-9]/g, '');
-  //cleanStr.map(Number);
-  console.log(cleanStr);
-  return cleanStr
-
+function cleanData(input) {
+  if (input === null || input === '' || input === undefined) return NaN;
+  input.replaceAll('.', '');
+  input.replace(',', '.');
+  input.trim();
+  return input;
 }

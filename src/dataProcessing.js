@@ -12,6 +12,5 @@ export function calculate(numbers) {
     "std": std(numbers),
     "sum": sum(numbers),
   };
-
   return results;
 }

@@ -8,7 +8,6 @@ import { makeHTML, dataTemplate, makeIndex } from './make-html.js';
 const DATA_DIR = './data';
 const OUTPUT_DIR = './dist';
 
-
 async function main() {
     const files = await readdir(DATA_DIR);
 
@@ -39,10 +38,8 @@ async function main() {
         dataSets.push(filename);
 
     }
-
     const index = dataTemplate('Gagnavinnsla!', makeIndex(dataSets));
     await writeFile(join(OUTPUT_DIR, 'index.html'), index, { flag: 'w+' });
-
 }
 
 main().catch((err) => console.error(err));
