@@ -31,14 +31,9 @@ async function main() {
         const numbers = parse(data);
         const stats = calculate(numbers);
 
-        //console.log('numbers :>> ', numbers);
-        const results = {
-          numbers,
-          stats
-        }
         const html = makeHTML(stats, numbers);
-        const template = dataTemplate(`Gagnasett ${file}`, html, true);
         const filename = file.split(".")[0];
+        const template = dataTemplate(`Gagnasett ${filename}`, html, true);
 
         await writeFile(join(OUTPUT_DIR, `${filename}.html`), template, { flag: 'w+' });
         dataSets.push(filename);
@@ -51,26 +46,3 @@ async function main() {
 }
 
 main().catch((err) => console.error(err));
-
-/*
-// les skrá af disk og skilar sem string
-const content = await readDataFile(file);
-
-// les string og skilar fylki af tölum
-const numbers = parse(content);
-
-// les fylki af tölum og skilar tölfræði upplýsingum í object
-const stats = calculate(numbers);
-
-// tekur saman upplýsingar sem template þarf
-const result = {
-  numbers,
-  stats,
-  // hér vantar fleira, t.d. skáarnafn á html skrá
-};
-
-// tekur við upplýsingum og skilar html
-const template = statsTemplate(title, result);
-
-await writeHtmlFile(template);
-*/

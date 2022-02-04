@@ -11,10 +11,13 @@ export function makeHTML(stats, numbers) {
       <p>Staðalfrávik: ${stats.std}</p>
       <p>Svið: ${stats.max - stats.min}</p>
     </section>
+    <section>
+      <p>Gögn: ${numbers}</p>
+    </section>
   `;
   const noData = `
   <section>
-    <p>No data</p>
+    <p>Gagnasett hefur engin leyfileg gögn</p>
   </section>
 `;
   if (numbers.length < 1) {
@@ -29,7 +32,7 @@ export function dataTemplate(title, data, showBack = false) {
   <html>
     <head>
       <title>${title ?? ''}</title>
-      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
       ${data ?? ''}
@@ -48,46 +51,3 @@ export function makeIndex(entries) {
 
   return `<ul>${list}</ul>`;
 }
-/*
-export function makeHTML(entry) {
-    const html = entry.content;
-    const { date } = entry.metadata;
-
-    const template = `
-      <section>
-        ${html}
-        <p>Skrifað: ${date}</p>
-      </section>
-    `;
-
-    return template;
-  }
-
-  export function makeIndex(entries) {
-    let list = '';
-    for (const entry of entries) {
-      const { slug, title } = entry;
-      const link = `<li><a href="${`${slug}.html`}">${title}</a></li>`;
-      list += link;
-    }
-
-    return `<ul>${list}</ul>`;
-  }
-
-
-  export function blogTemplate(title, blog, showBack = false) {
-    const back = showBack ? '<p><a href="/">Til baka</a></p>' : '';
-    return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>${title ?? ''}</title>
-        <link rel="stylesheet" href="styles.css">
-      </head>
-      <body>
-        ${blog ?? ''}
-        ${back}
-      </body>
-    </html>`;
-  }
-  */
